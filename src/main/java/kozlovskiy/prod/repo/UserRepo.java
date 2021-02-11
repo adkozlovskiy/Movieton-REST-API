@@ -1,12 +1,10 @@
 package kozlovskiy.prod.repo;
 
-import kozlovskiy.prod.entities.Movie;
+import kozlovskiy.prod.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MovieRepo extends JpaRepository<Movie, Integer> {
-
-    Movie findByTitle(String title);
+public interface UserRepo extends JpaRepository<User, Integer> {
 
 }
