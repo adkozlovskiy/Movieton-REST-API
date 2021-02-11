@@ -25,12 +25,6 @@ public class Favorite {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    public Favorite(int id, Movie movie, User user) {
-        this.id = id;
-        this.movie = movie;
-        this.user = user;
-    }
-
     public int getId() {
         return id;
     }

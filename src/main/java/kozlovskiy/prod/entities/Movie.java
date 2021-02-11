@@ -31,20 +31,6 @@ public class Movie {
     private String director;
     private String actors;
 
-    public Movie(int id, String image, String title, String description, int minutesDuration, String language, Date releaseDate, int ageLimit, String category, String director, String actors) {
-        this.id = id;
-        this.image = image;
-        this.title = title;
-        this.description = description;
-        this.minutesDuration = minutesDuration;
-        this.language = language;
-        this.releaseDate = releaseDate;
-        this.ageLimit = ageLimit;
-        this.category = category;
-        this.director = director;
-        this.actors = actors;
-    }
-
     public int getId() {
         return id;
     }

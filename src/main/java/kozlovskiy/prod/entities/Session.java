@@ -26,15 +26,6 @@ public class Session {
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private Movie movie;
 
-    public Session(int id, Date sessionDate, int hallNumber, int vacantSeats, int price, Movie movie) {
-        this.id = id;
-        this.sessionDate = sessionDate;
-        this.hallNumber = hallNumber;
-        this.vacantSeats = vacantSeats;
-        this.price = price;
-        this.movie = movie;
-    }
-
     public int getId() {
         return id;
     }

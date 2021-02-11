@@ -23,13 +23,6 @@ public class BarMenu {
     private String title;
     private int price;
 
-    public BarMenu(int id, String image, String title, int price) {
-        this.id = id;
-        this.image = image;
-        this.title = title;
-        this.price = price;
-    }
-
     public int getId() {
         return id;
     }

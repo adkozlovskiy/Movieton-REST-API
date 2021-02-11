@@ -24,14 +24,6 @@ public class User {
     private String image;
     private String name;
 
-    public User(int id, String login, String password, String image, String name) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.image = image;
-        this.name = name;
-    }
-
     public int getId() {
         return id;
     }

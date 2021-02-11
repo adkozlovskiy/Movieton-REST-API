@@ -21,6 +21,7 @@ bin/
 .idea
 *.iws
 *.iml
+*.yml
 *.ipr
 *.properties
 out/
