@@ -24,7 +24,6 @@ public class Movie {
     private String title;
     private String description;
     private int minutesDuration;
-    private String language;
     private Date releaseDate;
     private int ageLimit;
     private String category;
@@ -69,14 +68,6 @@ public class Movie {
 
     public void setMinutesDuration(int minutesDuration) {
         this.minutesDuration = minutesDuration;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 
     public Date getReleaseDate() {

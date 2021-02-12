@@ -19,8 +19,8 @@ public class Session {
     private int id;
     private Date sessionDate;
     private int hallNumber;
-    private int vacantSeats;
     private int price;
+    private String language;
 
     @ManyToOne
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
@@ -50,14 +50,6 @@ public class Session {
         this.hallNumber = hallNumber;
     }
 
-    public int getVacantSeats() {
-        return vacantSeats;
-    }
-
-    public void setVacantSeats(int vacantSeats) {
-        this.vacantSeats = vacantSeats;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -72,5 +64,13 @@ public class Session {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
