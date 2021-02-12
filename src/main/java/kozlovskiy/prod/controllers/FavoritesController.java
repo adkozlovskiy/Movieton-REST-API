@@ -1,20 +1,22 @@
 package kozlovskiy.prod.controllers;
 
+import kozlovskiy.prod.entities.Favorite;
 import kozlovskiy.prod.entities.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import kozlovskiy.prod.service.FavoriteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 @RestController
-@RequestMapping(name = "favorites")
+@RequestMapping("favorites")
 public class FavoritesController {
 
-    @PostMapping
-    ArrayList<HashMap<String, String>> getUserFavorites(@RequestBody User user) {
-        return null;
+    @Autowired
+    private FavoriteService service;
+
+    @GetMapping("/get/{user_id}")
+    List<Favorite> getUserFavorites(@PathVariable("user_id") int userId) {
+        return service.getUserFavorites(userId);
     }
 }

@@ -24,14 +24,9 @@ public class MoviesController {
     }
 
     @GetMapping("/categories/{category}")
-    HashMap<String, String> getMovies(@PathVariable String category) {
-        return null;
+    List<Movie> getMovies(@PathVariable String category) {
+        return service.getMoviesByCategory(category);
     }
-
-    /* @GetMapping("/get/{title}")
-    Movie getMovie(@PathVariable String title) {
-        return service.getMovieByTitle(title);
-    } */
 
     @GetMapping("/get/{id}")
     Movie getMovie(@PathVariable int id) {

@@ -14,24 +14,16 @@ public class MoviesService {
     @Autowired
     private MovieRepo movieRepo;
 
-    /* public Movie saveMovie(Movie movie) {
-        return movieRepo.save(movie);
-    } */
-
-    /* public List<Movie> saveMovies(List<Movie> movies) {
-        return movieRepo.saveAll(movies);
-    } */
-
     public List<Movie> getMovies() {
         return movieRepo.findAll();
+    }
+
+    public List<Movie> getMoviesByCategory(String category) {
+        return movieRepo.findByCategory(category);
     }
 
     public Movie getMovieById(int id) {
         return movieRepo.findById(id).orElseThrow(NotFoundException::new);
     }
-
-    /* public Movie getMovieByTitle(String title) {
-        return movieRepo.findByTitle(title);
-    } */
 
 }

@@ -1,13 +1,13 @@
 package kozlovskiy.prod.repo;
 
-import kozlovskiy.prod.entities.Movie;
+import kozlovskiy.prod.entities.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface MovieRepo extends JpaRepository<Movie, Integer> {
+public interface SessionRepo extends JpaRepository<Session, Integer> {
 
-    List<Movie> findByCategory(String category);
+    List<Session> findByMovieId(int movieId);
 }
