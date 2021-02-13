@@ -19,8 +19,4 @@ public class BarService {
     public List<BarMenu> getMenu() {
         return barRepo.findAll(Sort.by(Sort.Direction.ASC, "price"));
     }
-
-    public BarMenu getMenuItemById(int id) {
-        return barRepo.findById(id).orElseThrow(NotFoundException::new);
-    }
 }
