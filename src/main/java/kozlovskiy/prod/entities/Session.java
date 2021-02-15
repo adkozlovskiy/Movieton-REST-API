@@ -19,8 +19,8 @@ public class Session {
     private int id;
     private Date sessionDate;
     private int hallNumber;
-    private int price;
     private String language;
+    private int price;
 
     @ManyToOne
     @JoinColumn(name = "movie_id", referencedColumnName = "id")

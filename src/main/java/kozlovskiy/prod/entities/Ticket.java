@@ -25,10 +25,6 @@ public class Ticket {
     private Session session;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    private Employee employee;
-
-    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
@@ -70,14 +66,6 @@ public class Ticket {
 
     public void setSession(Session session) {
         this.session = session;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public User getUser() {

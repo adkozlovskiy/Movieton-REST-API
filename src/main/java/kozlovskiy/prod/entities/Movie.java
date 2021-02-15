@@ -23,10 +23,10 @@ public class Movie {
     private String image;
     private String title;
     private String description;
+    private int rating;
     private int minutesDuration;
     private Date releaseDate;
     private int ageLimit;
-    private String category;
     private String director;
     private String actors;
 
@@ -62,6 +62,14 @@ public class Movie {
         this.description = description;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     public int getMinutesDuration() {
         return minutesDuration;
     }
@@ -84,14 +92,6 @@ public class Movie {
 
     public void setAgeLimit(int ageLimit) {
         this.ageLimit = ageLimit;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getDirector() {

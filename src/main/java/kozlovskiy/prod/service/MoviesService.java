@@ -18,10 +18,6 @@ public class MoviesService {
         return movieRepo.findAll();
     }
 
-    public List<Movie> getMoviesByCategory(String category) {
-        return movieRepo.findByCategory(category);
-    }
-
     public Movie getMovieById(int id) {
         return movieRepo.findById(id).orElseThrow(NotFoundException::new);
     }

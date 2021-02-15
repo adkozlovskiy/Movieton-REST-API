@@ -1,5 +1,6 @@
 package kozlovskiy.prod.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,8 @@ public class User {
     @GeneratedValue
     private int id;
     private String login;
+
+    @JsonIgnore
     private String password;
     private String image;
     private String name;
