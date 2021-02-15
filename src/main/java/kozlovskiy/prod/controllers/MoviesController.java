@@ -33,7 +33,7 @@ public class MoviesController {
     }
 
     @GetMapping("/categories/{categoryId}")
-    List<MovieCategory> findAllCategories(@PathVariable int categoryId) {
+    List<MovieCategory> findAllMoviesByCategoryId(@PathVariable int categoryId) {
         return movieCategoryService.findAllMoviesByCategoryId(categoryId);
     }
 
