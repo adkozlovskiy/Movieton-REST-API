@@ -18,7 +18,7 @@ public class MoviesService {
         return movieRepo.findAll();
     }
 
-    public Movie getMovieById(int id) {
+    public Movie getMovieById(Long id) {
         return movieRepo.findById(id).orElseThrow(NotFoundException::new);
     }
 

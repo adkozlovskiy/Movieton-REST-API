@@ -23,7 +23,7 @@ public class TicketsController {
     }
 
     @GetMapping("/get/{id}")
-    Ticket getTicket(@PathVariable int id) {
+    Ticket getTicket(@PathVariable Long id) {
         return service.findTicketById(id);
     }
 }

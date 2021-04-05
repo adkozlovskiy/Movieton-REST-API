@@ -13,7 +13,7 @@ public class FavoriteService {
     @Autowired
     private FavoriteRepo favoriteRepo;
 
-    public List<Favorite> getUserFavorites(int userId) {
+    public List<Favorite> getUserFavorites(Long userId) {
         return favoriteRepo.findByUserId(userId);
     }
 }

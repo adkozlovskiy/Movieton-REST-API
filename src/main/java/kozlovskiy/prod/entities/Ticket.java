@@ -14,49 +14,44 @@ import javax.persistence.*;
 public class Ticket {
 
     @Id
-    @GeneratedValue
-    private int id;
-    private String clientName;
-    private int line;
-    private int seat;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private Integer line;
+
+    @Column(nullable = false)
+    private Integer seat;
 
     @ManyToOne
-    @JoinColumn(name = "session_id", referencedColumnName = "id")
+    @JoinColumn(name = "session_id", referencedColumnName = "id", nullable = false)
     private Session session;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public int getLine() {
+    public Integer getLine() {
         return line;
     }
 
-    public void setLine(int line) {
+    public void setLine(Integer line) {
         this.line = line;
     }
 
-    public int getSeat() {
+    public Integer getSeat() {
         return seat;
     }
 
-    public void setSeat(int seat) {
+    public void setSeat(Integer seat) {
         this.seat = seat;
     }
 

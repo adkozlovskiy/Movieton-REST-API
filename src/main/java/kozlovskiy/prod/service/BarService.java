@@ -1,6 +1,6 @@
 package kozlovskiy.prod.service;
 
-import kozlovskiy.prod.entities.BarMenu;
+import kozlovskiy.prod.entities.Menu;
 import kozlovskiy.prod.repo.BarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -14,7 +14,7 @@ public class BarService {
     @Autowired
     private BarRepo barRepo;
 
-    public List<BarMenu> getMenu() {
+    public List<Menu> getMenu() {
         return barRepo.findAll(Sort.by(Sort.Direction.ASC, "price"));
     }
 }

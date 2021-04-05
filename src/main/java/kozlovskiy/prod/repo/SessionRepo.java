@@ -2,12 +2,13 @@ package kozlovskiy.prod.repo;
 
 import kozlovskiy.prod.entities.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-@Repository
-public interface SessionRepo extends JpaRepository<Session, Integer> {
+public interface SessionRepo extends JpaRepository<Session, Long> {
 
-    List<Session> findByMovieId(int movieId);
+    @Query(value = "SELECT * FROM sessions WHERE movie_id = :movieId", nativeQuery = true)
+    List<Session> findByMovieId(@Param("movieId") int movieId);
 }

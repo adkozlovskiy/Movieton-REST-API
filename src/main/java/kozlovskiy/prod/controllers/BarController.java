@@ -1,6 +1,6 @@
 package kozlovskiy.prod.controllers;
 
-import kozlovskiy.prod.entities.BarMenu;
+import kozlovskiy.prod.entities.Menu;
 import kozlovskiy.prod.service.BarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("menu")
+@RequestMapping("api/menu")
 public class BarController {
 
     @Autowired
     private BarService service;
 
     @GetMapping
-    List<BarMenu> getMenu() {
+    private List<Menu> getMenu() {
         return service.getMenu();
     }
 }

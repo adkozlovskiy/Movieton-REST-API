@@ -15,22 +15,30 @@ import java.util.Date;
 public class Session {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private Date sessionDate;
-    private int hallNumber;
+
+    @Column(nullable = false)
+    private Long hall;
+
+    @Column(nullable = false)
     private String language;
-    private int price;
+
+    @Column(nullable = false)
+    private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    @JoinColumn(name = "movie_id", referencedColumnName = "id", nullable = false)
     private Movie movie;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,19 +50,27 @@ public class Session {
         this.sessionDate = sessionDate;
     }
 
-    public int getHallNumber() {
-        return hallNumber;
+    public Long getHall() {
+        return hall;
     }
 
-    public void setHallNumber(int hallNumber) {
-        this.hallNumber = hallNumber;
+    public void setHall(Long hall) {
+        this.hall = hall;
     }
 
-    public int getPrice() {
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -64,13 +80,5 @@ public class Session {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 }

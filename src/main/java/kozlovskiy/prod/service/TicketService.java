@@ -18,7 +18,7 @@ public class TicketService {
         return ticketRepo.findAll();
     }
 
-    public Ticket findTicketById(int id) {
+    public Ticket findTicketById(Long id) {
         return ticketRepo.findById(id).orElseThrow(NotFoundException::new);
     }
 

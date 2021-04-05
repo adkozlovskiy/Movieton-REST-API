@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -18,23 +15,40 @@ import java.util.Date;
 public class Movie {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String image;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String description;
-    private int rating;
-    private int minutesDuration;
+
+    @Column(nullable = false)
+    private Byte ageLimit;
+
+    @Column(nullable = false)
+    private Integer minutesDuration;
+
+    @Column(nullable = false)
     private Date releaseDate;
-    private int ageLimit;
+
+    @Column(nullable = false)
     private String director;
+
+    @Column(nullable = false)
     private String actors;
 
-    public int getId() {
+    private Byte rating;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,19 +76,27 @@ public class Movie {
         this.description = description;
     }
 
-    public int getRating() {
+    public Byte getAgeLimit() {
+        return ageLimit;
+    }
+
+    public void setAgeLimit(Byte ageLimit) {
+        this.ageLimit = ageLimit;
+    }
+
+    public Byte getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Byte rating) {
         this.rating = rating;
     }
 
-    public int getMinutesDuration() {
+    public Integer getMinutesDuration() {
         return minutesDuration;
     }
 
-    public void setMinutesDuration(int minutesDuration) {
+    public void setMinutesDuration(Integer minutesDuration) {
         this.minutesDuration = minutesDuration;
     }
 
@@ -84,14 +106,6 @@ public class Movie {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public int getAgeLimit() {
-        return ageLimit;
-    }
-
-    public void setAgeLimit(int ageLimit) {
-        this.ageLimit = ageLimit;
     }
 
     public String getDirector() {

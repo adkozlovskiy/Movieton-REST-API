@@ -18,7 +18,7 @@ public class UsersService {
         return userRepo.findAll();
     }
 
-    public User getUserById(int id) {
+    public User getUserById(Long id) {
         return userRepo.findById(id).orElseThrow(NotFoundException::new);
     }
 }
