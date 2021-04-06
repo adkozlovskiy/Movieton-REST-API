@@ -11,16 +11,25 @@ public class AuthService {
     @Autowired
     private AuthRepo authRepo;
 
-    public User registerUser(User user) {
+    public User registerUser(User regData) {
         try {
-            return authRepo.save(user);
+            return authRepo.save(regData);
 
         } catch (Exception e) {
             return null;
         }
     }
 
-    public User authorizeUser(User user) {
-        return authRepo.findByLogin(user.getLogin());
+    public User authorizeUser(User ld) {
+        User u = authRepo.findByLogin(ld.getLogin(), ld.getEmail(), ld.getPhone());
+
+        if (u != null) {
+            if ((u.getPassword() + u.getSalt()).equals(ld.getPassword() + ld.getSalt()))
+                return u;
+
+            else return null;
+        }
+
+        return null;
     }
 }

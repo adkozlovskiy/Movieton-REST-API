@@ -26,6 +26,12 @@ public class User {
     @Column(nullable = false)
     private String salt;
 
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true)
+    private String phone;
+
     private String image;
     private String name;
 
@@ -59,6 +65,22 @@ public class User {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getImage() {

@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("sessions")
+@RequestMapping("api/sessions")
 public class SessionsController {
 
     @Autowired
     private SessionService service;
 
-    @GetMapping("?")
+    @GetMapping("/get")
     @ResponseBody
     private List<Session> getSessionsByMovieId(@RequestParam("movie_id") Long movieId) {
         return service.getSessionsByMovieId(movieId);
     }
-
 }

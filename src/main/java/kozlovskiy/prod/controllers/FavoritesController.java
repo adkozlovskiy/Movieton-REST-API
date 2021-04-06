@@ -14,7 +14,7 @@ public class FavoritesController {
     @Autowired
     private FavoriteService service;
 
-    @GetMapping("?")
+    @GetMapping("/get")
     @ResponseBody
     private List<Favorite> getUserFavorites(@RequestParam(name = "user_id") Long userId) {
         return service.getUserFavorites(userId);

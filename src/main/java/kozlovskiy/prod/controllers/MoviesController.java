@@ -19,7 +19,7 @@ public class MoviesController {
         return service.getMovies();
     }
 
-    @GetMapping("?")
+    @GetMapping("/get")
     @ResponseBody
     private Movie getMovie(@RequestParam(name = "movie_id") Long movieId) {
         return service.getMovieById(movieId);

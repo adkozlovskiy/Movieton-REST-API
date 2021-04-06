@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("api/")
 public class AuthController {
 
     @Autowired
     private AuthService service;
 
-    @PostMapping
+    @PostMapping("reg")
     public User registerUser(@RequestBody User user) {
         return service.registerUser(user);
     }
 
-    @PostMapping
+    @PostMapping("auth")
     public User authorizeUser(@RequestBody User user) {
         return service.authorizeUser(user);
     }
