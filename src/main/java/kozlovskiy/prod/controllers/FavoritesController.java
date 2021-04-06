@@ -19,4 +19,9 @@ public class FavoritesController {
     private List<Favorite> getUserFavorites(@RequestParam(name = "user_id") Long userId) {
         return service.getUserFavorites(userId);
     }
+
+    @PostMapping
+    private Favorite postUserFavorite(@RequestBody Favorite favorite) {
+        return service.postUserFavorite(favorite);
+    }
 }

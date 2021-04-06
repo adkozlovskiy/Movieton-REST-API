@@ -21,7 +21,7 @@ public class MoviesController {
 
     @GetMapping("?")
     @ResponseBody
-    private Movie getMovie(@RequestParam(name = "user_id") Long userId) {
-        return service.getMovieById(userId);
+    private Movie getMovie(@RequestParam(name = "movie_id") Long movieId) {
+        return service.getMovieById(movieId);
     }
 }

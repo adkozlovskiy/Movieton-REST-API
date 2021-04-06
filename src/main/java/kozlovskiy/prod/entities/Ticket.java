@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +17,9 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    private Date buyDate;
 
     @Column(nullable = false)
     private Integer line;
@@ -37,6 +41,14 @@ public class Ticket {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getBuyDate() {
+        return buyDate;
+    }
+
+    public void setBuyDate(Date buyDate) {
+        this.buyDate = buyDate;
     }
 
     public Integer getLine() {

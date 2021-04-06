@@ -16,4 +16,8 @@ public class FavoriteService {
     public List<Favorite> getUserFavorites(Long userId) {
         return favoriteRepo.findByUserId(userId);
     }
+
+    public Favorite postUserFavorite(Favorite favorite) {
+        return favoriteRepo.save(favorite);
+    }
 }

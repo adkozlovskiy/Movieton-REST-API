@@ -10,5 +10,5 @@ import java.util.List;
 public interface SessionRepo extends JpaRepository<Session, Long> {
 
     @Query(value = "SELECT * FROM sessions WHERE movie_id = :movieId", nativeQuery = true)
-    List<Session> findByMovieId(@Param("movieId") int movieId);
+    List<Session> findByMovieId(@Param("movieId") Long movieId);
 }

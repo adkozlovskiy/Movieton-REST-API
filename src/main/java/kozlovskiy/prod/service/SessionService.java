@@ -12,7 +12,7 @@ public class SessionService {
     @Autowired
     private SessionRepo sessionRepo;
 
-    public List<Session> getSessionsByMovieId(int movieId) {
+    public List<Session> getSessionsByMovieId(Long movieId) {
         return sessionRepo.findByMovieId(movieId);
     }
 }
