@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface AuthRepo extends JpaRepository<User, Long> {
 
-    @Query(value = "SELECT * FROM users WHERE login = :login OR email = :email", nativeQuery = true)
-    User findByLogin(@Param("login") String login, @Param("email") String email);
+    @Query(value = "SELECT * FROM users WHERE nickname = :nickname OR email = :email", nativeQuery = true)
+    User findByLogin(@Param("nickname") String nickname, @Param("email") String email);
+
 }

@@ -5,7 +5,9 @@ import kozlovskiy.prod.repo.AuthRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static org.apache.tomcat.util.security.MD5Encoder.encode;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Service
 public class AuthService {
@@ -19,30 +21,53 @@ public class AuthService {
      */
 
     public User registerUser(User rd) {
-        try {
-            String encodedPass = getHashedPassword(rd.getPassword(), rd.getSalt());
-            rd.setPassword(encodedPass);
-            return authRepo.save(rd);
+        System.out.println(rd.getPassword());
+        User existed = authRepo.findByLogin(rd.getNickname(), rd.getEmail());
+        if (existed == null) {
+            try {
+                String encodedPass = getHashedPass(rd.getPassword(), rd.getSalt());
+                rd.setPassword(encodedPass);
+                return authRepo.save(rd);
 
-        } catch (Exception e) {
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        } else {
+            // TODO: 07.04.2021
             return null;
         }
     }
 
     public User authorizeUser(User ld) {
-        User u = authRepo.findByLogin(ld.getLogin(), ld.getEmail());
+        User u = authRepo.findByLogin(ld.getNickname(), ld.getEmail());
 
         if (u != null) {
-            if (u.getPassword().equals(getHashedPassword(ld.getPassword(), u.getSalt())))
-                return u;
+            try {
+                if (u.getPassword().equals(getHashedPass(ld.getPassword(), u.getSalt())))
+                    return u;
 
-            else return null;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
         return null;
     }
 
-    private String getHashedPassword(String pass, String salt) {
-        return encode((pass + salt).getBytes());
+    private String getHashedPass(String pass, String salt) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] messageDigest = md.digest((pass + salt).getBytes());
+
+        BigInteger no = new BigInteger(1, messageDigest);
+
+        StringBuilder encoded = new StringBuilder(no.toString(16));
+
+        while (encoded.length() < 32) {
+            encoded.insert(0, "0");
+        }
+
+        return encoded.toString();
     }
 }

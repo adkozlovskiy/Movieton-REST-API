@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface FavoriteRepo extends JpaRepository<Favorite, Long> {
 
-    @Query(value = "SELECT * FROM favorites WHERE user_id = :userId", nativeQuery = true)
+    @Query(value = "SELECT * FROM favorites WHERE user_id = :userId ORDER BY add_date", nativeQuery = true)
     List<Favorite> findByUserId(@Param("userId") Long userId);
 }
