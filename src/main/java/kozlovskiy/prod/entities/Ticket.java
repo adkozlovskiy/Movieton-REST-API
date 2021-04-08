@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -26,6 +26,8 @@ public class Ticket {
 
     @Column(nullable = false)
     private Integer seat;
+
+    private Double otherPrice;
 
     @ManyToOne
     @JoinColumn(name = "session_id", referencedColumnName = "id", nullable = false)
@@ -81,5 +83,13 @@ public class Ticket {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Double getOtherPrice() {
+        return otherPrice;
+    }
+
+    public void setOtherPrice(Double otherPrice) {
+        this.otherPrice = otherPrice;
     }
 }

@@ -3,6 +3,8 @@ package kozlovskiy.prod.controllers;
 import kozlovskiy.prod.entities.User;
 import kozlovskiy.prod.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,11 @@ public class AuthController {
     }
 
     @PostMapping("auth")
-    public User authorizeUser(@RequestBody User user) {
-        return service.authorizeUser(user);
+    public ResponseEntity<User> authorizeUser(@RequestBody User user) {
+        User body = service.authorizeUser(user);
+
+        return body != null
+                ? new ResponseEntity<>(user, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

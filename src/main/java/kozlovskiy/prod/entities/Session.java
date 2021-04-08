@@ -22,7 +22,7 @@ public class Session {
     private Date sessionDate;
 
     @Column(nullable = false)
-    private Long hall;
+    private String hall;
 
     @Column(nullable = false)
     private String language;
@@ -50,11 +50,11 @@ public class Session {
         this.sessionDate = sessionDate;
     }
 
-    public Long getHall() {
+    public String getHall() {
         return hall;
     }
 
-    public void setHall(Long hall) {
+    public void setHall(String hall) {
         this.hall = hall;
     }
 
