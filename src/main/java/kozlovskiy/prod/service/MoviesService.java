@@ -21,5 +21,4 @@ public class MoviesService {
     public Movie getMovieById(Long id) {
         return movieRepo.findById(id).orElseThrow(NotFoundException::new);
     }
-
 }

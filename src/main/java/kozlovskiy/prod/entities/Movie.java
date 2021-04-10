@@ -31,6 +31,9 @@ public class Movie {
     private Byte ageLimit;
 
     @Column(nullable = false)
+    private String categories;
+
+    @Column(nullable = false)
     private Integer minutesDuration;
 
     @Column(nullable = false)
@@ -82,6 +85,14 @@ public class Movie {
 
     public void setAgeLimit(Byte ageLimit) {
         this.ageLimit = ageLimit;
+    }
+
+    public String getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String categories) {
+        this.categories = categories;
     }
 
     public Byte getRating() {
