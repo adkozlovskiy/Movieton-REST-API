@@ -3,7 +3,11 @@ package kozlovskiy.prod.controllers;
 import kozlovskiy.prod.entities.Movie;
 import kozlovskiy.prod.service.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,13 +19,11 @@ public class MoviesController {
     private MoviesService service;
 
     @GetMapping
-    private List<Movie> getMovies() {
-        return service.getMovies();
-    }
+    private ResponseEntity<List<Movie>> getMovies() {
+        List<Movie> body = service.getMovies();
 
-    @GetMapping("/get")
-    @ResponseBody
-    private Movie getMovie(@RequestParam(name = "movie_id") Long movieId) {
-        return service.getMovieById(movieId);
+        return body != null && !body.isEmpty()
+                ? new ResponseEntity<>(body, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

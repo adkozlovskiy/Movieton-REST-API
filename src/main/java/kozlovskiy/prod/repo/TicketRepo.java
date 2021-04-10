@@ -12,4 +12,7 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     @Query(value = "SELECT * FROM tickets WHERE user_id = :user_id ORDER BY buy_date DESC", nativeQuery = true)
     List<Ticket> findTicketsByUserId(@Param("user_id") Long userId);
 
+    @Query(value = "SELECT * FROM tickets WHERE session_id = :session_id", nativeQuery = true)
+    List<Ticket> findTicketsBySessionId(@Param("session_id") Long sessionId);
+
 }

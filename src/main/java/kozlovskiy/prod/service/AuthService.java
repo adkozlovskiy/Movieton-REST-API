@@ -56,6 +56,10 @@ public class AuthService {
         return null;
     }
 
+    public User getUserData(Long userId) {
+        return authRepo.findById(userId).orElse(null);
+    }
+
     private String getHashedPass(String pass, String salt) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] messageDigest = md.digest((pass + salt).getBytes());

@@ -5,10 +5,7 @@ import kozlovskiy.prod.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/")
@@ -17,9 +14,25 @@ public class AuthController {
     @Autowired
     private AuthService service;
 
+    @GetMapping("users")
+    public ResponseEntity<User> getUserData(@RequestParam("user_id") Long userId) {
+        User body = service.getUserData(userId);
+
+        if (body != null) {
+            body.setSalt(null);
+            body.setPassword(null);
+            return new ResponseEntity<>(body, HttpStatus.OK);
+
+        } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping("reg")
-    public User registerUser(@RequestBody User user) {
-        return service.registerUser(user);
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        User body = service.registerUser(user);
+
+        return body != null
+                ? new ResponseEntity<>(body, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("auth")
@@ -27,7 +40,7 @@ public class AuthController {
         User body = service.authorizeUser(user);
 
         return body != null
-                ? new ResponseEntity<>(user, HttpStatus.OK)
+                ? new ResponseEntity<>(body, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

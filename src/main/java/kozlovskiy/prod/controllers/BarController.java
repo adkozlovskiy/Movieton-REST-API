@@ -3,6 +3,8 @@ package kozlovskiy.prod.controllers;
 import kozlovskiy.prod.entities.Menu;
 import kozlovskiy.prod.service.BarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,11 @@ public class BarController {
     private BarService service;
 
     @GetMapping
-    private List<Menu> getMenu() {
-        return service.getMenu();
+    private ResponseEntity<List<Menu>> getMenu() {
+        List<Menu> body = service.getMenu();
+
+        return body != null && !body.isEmpty()
+                ? new ResponseEntity<>(body, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
