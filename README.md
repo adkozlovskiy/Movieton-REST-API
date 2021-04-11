@@ -1,5 +1,5 @@
 # Movieton
-Course work on the topic "Information and reference system of the cinema"
+Rest-API server for coursework on the topic "Information and reference system of the cinema".
 
 ### Documentation
 - [JavaDoc](https://github.com/adkozlovskiy/Movieton)
