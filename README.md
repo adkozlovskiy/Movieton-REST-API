@@ -1,4 +1,4 @@
-# Movieton-Rest-API
+# Movieton
 Course work on the topic "Information and reference system of the cinema"
 
 ### Documentation
