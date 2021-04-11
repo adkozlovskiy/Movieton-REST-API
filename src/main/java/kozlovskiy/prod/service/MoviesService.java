@@ -1,7 +1,6 @@
 package kozlovskiy.prod.service;
 
 import kozlovskiy.prod.entities.Movie;
-import kozlovskiy.prod.exceptions.NotFoundException;
 import kozlovskiy.prod.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +15,5 @@ public class MoviesService {
 
     public List<Movie> getMovies() {
         return movieRepo.findAll();
-    }
-
-    public Movie getMovieById(Long id) {
-        return movieRepo.findById(id).orElseThrow(NotFoundException::new);
     }
 }
