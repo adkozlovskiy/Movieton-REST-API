@@ -1,6 +1,7 @@
 package kozlovskiy.prod.controllers;
 
 import kozlovskiy.prod.entities.Menu;
+import kozlovskiy.prod.repo.BarRepo;
 import kozlovskiy.prod.service.BarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,10 @@ public class BarController {
     @Autowired
     private BarService service;
 
+
+    /**
+     * @return all {@link Menu} positions from {@link BarRepo}
+     */
     @GetMapping
     private ResponseEntity<List<Menu>> getMenu() {
         List<Menu> body = service.getMenu();

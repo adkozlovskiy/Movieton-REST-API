@@ -1,6 +1,8 @@
 package kozlovskiy.prod.controllers;
 
+import kozlovskiy.prod.entities.Session;
 import kozlovskiy.prod.entities.Ticket;
+import kozlovskiy.prod.entities.User;
 import kozlovskiy.prod.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,11 @@ public class TicketsController {
     @Autowired
     private TicketService service;
 
+
+    /**
+     * @param userId is {@link User} id.
+     * @return OK with List of {@link Ticket} where user_id = userId, else - NOT_FOUND.
+     */
     @GetMapping("/user_tickets")
     @ResponseBody
     private ResponseEntity<List<Ticket>> getTicketsByUserId(@RequestParam("user_id") Long userId) {
@@ -25,6 +32,10 @@ public class TicketsController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * @param sessionId is {@link Session} id.
+     * @return OK and List of {@link Ticket} where session_id = sessionId, else - NOT_FOUND.
+     */
     @GetMapping("/session_tickets")
     @ResponseBody
     private ResponseEntity<List<Ticket>> getTicketsBySessionId(@RequestParam("session_id") Long sessionId) {

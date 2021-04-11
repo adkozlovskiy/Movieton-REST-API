@@ -1,6 +1,7 @@
 package kozlovskiy.prod.controllers;
 
 import kozlovskiy.prod.entities.Favorite;
+import kozlovskiy.prod.entities.User;
 import kozlovskiy.prod.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,10 @@ public class FavoritesController {
     @Autowired
     private FavoriteService service;
 
+    /**
+     * @param userId is {@link User} id.
+     * @return OK with List of {@link Favorite} if found, else - NOT_FOUND.
+     */
     @GetMapping("/get")
     @ResponseBody
     private ResponseEntity<List<Favorite>> getUserFavorites(@RequestParam(name = "user_id") Long userId) {
@@ -26,6 +31,11 @@ public class FavoritesController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+
+    /**
+     * @param favorite is {@link Favorite} body.
+     * @return created {@link Favorite} and CREATED if created.
+     */
     @PostMapping
     private ResponseEntity<Favorite> postUserFavorite(@RequestBody Favorite favorite) {
         Favorite body = service.postUserFavorite(favorite);

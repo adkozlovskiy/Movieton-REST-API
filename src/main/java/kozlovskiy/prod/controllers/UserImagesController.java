@@ -21,10 +21,14 @@ public class UserImagesController {
     @Autowired
     private UserImagesService userImagesService;
 
-    @PostMapping("/upload")
-    private UploadResponse uploadUserImage(@RequestParam("file") MultipartFile file) {
-        String fileName = userImagesService.storeFile(file);
 
+    /**
+     * @param file is MultiPart file.
+     * @return {@link UploadResponse} with Uri if successful uploaded.
+     */
+    @PostMapping("/upload")
+    private UploadResponse uploadUserImage(@RequestBody MultipartFile file) {
+        String fileName = userImagesService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/api/users/images/download/")
                 .path(fileName)
@@ -34,6 +38,11 @@ public class UserImagesController {
                 file.getContentType(), file.getSize());
     }
 
+    /**
+     * @param fileName is name of uploaded file
+     * @param request  is servlet request
+     * @return OK with uploaded file as body.
+     */
     @GetMapping("/download/{fileName:.+}")
     private ResponseEntity<Resource> downloadUserImage(@PathVariable String fileName, HttpServletRequest request) {
         Resource resource = userImagesService.loadFileAsResource(fileName);

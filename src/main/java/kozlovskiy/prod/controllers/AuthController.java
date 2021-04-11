@@ -14,6 +14,11 @@ public class AuthController {
     @Autowired
     private AuthService service;
 
+    /**
+     * @param userId is {@link User} id.
+     * @return data about the {@link User} by his id.
+     * Password and salt are nullified.
+     */
     @GetMapping("users")
     public ResponseEntity<User> getUserData(@RequestParam("user_id") Long userId) {
         User body = service.getUserData(userId);
@@ -26,15 +31,24 @@ public class AuthController {
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * @param user is {@link User} data from register form.
+     * @return OK if user successful created, else - NO_CONTENT.
+     */
     @PostMapping("reg")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         User body = service.registerUser(user);
 
         return body != null
                 ? new ResponseEntity<>(body, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+
+    /**
+     * @param user is {@link User} data from auth form.
+     * @return OK if user successful authorized, else - NOT_FOUND.
+     */
     @PostMapping("auth")
     public ResponseEntity<User> authorizeUser(@RequestBody User user) {
         User body = service.authorizeUser(user);

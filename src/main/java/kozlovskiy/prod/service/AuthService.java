@@ -34,7 +34,6 @@ public class AuthService {
                 return null;
             }
         } else {
-            // TODO: 07.04.2021
             return null;
         }
     }

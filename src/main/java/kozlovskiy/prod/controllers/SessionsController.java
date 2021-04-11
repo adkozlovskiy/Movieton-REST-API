@@ -1,6 +1,8 @@
 package kozlovskiy.prod.controllers;
 
+import kozlovskiy.prod.entities.Movie;
 import kozlovskiy.prod.entities.Session;
+import kozlovskiy.prod.repo.SessionRepo;
 import kozlovskiy.prod.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +18,21 @@ public class SessionsController {
     @Autowired
     private SessionService service;
 
+    /**
+     * @param movieId is id of {@link Movie}.
+     * @return List of {@link Session} found by this movieId in {@link SessionRepo}
+     */
     @GetMapping("/on_movie")
     @ResponseBody
     private List<Session> getSessionsByMovieId(@RequestParam("movie_id") Long movieId) {
         return service.getSessionsByMovieId(movieId);
     }
 
+    /**
+     * @param sessionId is id of {@link Session}.
+     * @return OK and {@link Session} if found in {@link SessionRepo}, else - NOT_FOUND.
+     * It's used to find out if a session is currently valid.
+     */
     @GetMapping
     @ResponseBody
     private ResponseEntity<Session> getSession(@RequestParam("session_id") Long sessionId) {
