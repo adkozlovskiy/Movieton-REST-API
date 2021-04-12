@@ -22,4 +22,4 @@ server:
   port: 9191
 
 file:
-  upload-dir: /users/callicoder/uploads
+  upload-dir: D://uploads

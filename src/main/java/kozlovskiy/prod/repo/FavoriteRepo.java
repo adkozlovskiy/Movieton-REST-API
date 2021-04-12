@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface FavoriteRepo extends JpaRepository<Favorite, Long> {
 
+    /**
+     * @param id the user id
+     * @return List of {@link Favorite} WHERE user_id = id
+     */
     @Query(value = "SELECT * FROM favorites WHERE user_id = :userId ORDER BY add_date", nativeQuery = true)
-    List<Favorite> findByUserId(@Param("userId") Long userId);
+    List<Favorite> findByUserId(@Param("userId") Long id);
 }
