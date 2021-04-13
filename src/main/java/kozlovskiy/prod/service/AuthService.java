@@ -19,7 +19,6 @@ public class AuthService {
      * @param rd is register data such as password, salt, username
      * @return created user if successful registered, else - null
      */
-
     public User registerUser(User rd) {
         System.out.println(rd.getPassword());
         User existed = authRepo.findByLogin(rd.getNickname(), rd.getEmail());

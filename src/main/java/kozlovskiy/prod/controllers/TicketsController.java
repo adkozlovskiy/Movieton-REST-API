@@ -18,7 +18,6 @@ public class TicketsController {
     @Autowired
     private TicketService service;
 
-
     /**
      * @param userId is {@link User} id.
      * @return OK with List of {@link Ticket} where user_id = userId, else - NOT_FOUND.

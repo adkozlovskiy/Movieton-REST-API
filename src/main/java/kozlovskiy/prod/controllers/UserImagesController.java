@@ -1,6 +1,7 @@
 package kozlovskiy.prod.controllers;
 
 import kozlovskiy.prod.entities.UploadResponse;
+import kozlovskiy.prod.service.AuthService;
 import kozlovskiy.prod.service.UserImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -21,6 +22,8 @@ public class UserImagesController {
     @Autowired
     private UserImagesService userImagesService;
 
+    @Autowired
+    private AuthService authService;
 
     /**
      * @param file is MultiPart file.
