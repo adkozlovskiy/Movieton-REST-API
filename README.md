@@ -8,4 +8,3 @@ Here is a detailed description of all methods.
 
 ### Client
 - [Github repository](https://github.com/adkozlovskiy/Movieton)
-- [Google Play Market](https://github.com/adkozlovskiy/Movieton)
