@@ -1,5 +1,5 @@
 # Movieton
-RESTful API application for coursework on the topic "Information and reference system of the cinema".
+RESTful API application for сourse work on the topic "Development of an information system for the cinema using Java, Spring and mobile development technologies."
 
 ### Documentation
 - [JavaDoc](https://github.com/adkozlovskiy/Movieton)
