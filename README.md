@@ -1,4 +1,4 @@
-# Movieton
+# Movieton-REST-API
 ### Server application for сourse work 
 on the topic "Development of an information system for the cinema using Java, Spring and mobile development technologies."
 
