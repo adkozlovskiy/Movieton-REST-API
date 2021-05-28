@@ -38,10 +38,7 @@ public class AuthController {
     @PostMapping("reg")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         User body = service.registerUser(user);
-
-        return body != null
-                ? new ResponseEntity<>(body, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(body, HttpStatus.CREATED);
     }
 
 
@@ -53,8 +50,6 @@ public class AuthController {
     public ResponseEntity<User> authorizeUser(@RequestBody User user) {
         User body = service.authorizeUser(user);
 
-        return body != null
-                ? new ResponseEntity<>(body, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(body, HttpStatus.OK);
     }
 }

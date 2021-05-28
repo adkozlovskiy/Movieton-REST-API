@@ -23,7 +23,7 @@ public class FavoritesController {
      */
     @GetMapping("/get")
     @ResponseBody
-    private ResponseEntity<List<Favorite>> getUserFavorites(@RequestParam(name = "user_id") Long userId) {
+    public ResponseEntity<List<Favorite>> getUserFavorites(@RequestParam(name = "user_id") Long userId) {
         List<Favorite> body = service.getUserFavorites(userId);
 
         return body != null && !body.isEmpty()
@@ -37,7 +37,7 @@ public class FavoritesController {
      * @return created {@link Favorite} and CREATED if created.
      */
     @PostMapping
-    private ResponseEntity<Favorite> postUserFavorite(@RequestBody Favorite favorite) {
+    public ResponseEntity<Favorite> postUserFavorite(@RequestBody Favorite favorite) {
         Favorite body = service.postUserFavorite(favorite);
         return new ResponseEntity<>(body, HttpStatus.CREATED);
     }

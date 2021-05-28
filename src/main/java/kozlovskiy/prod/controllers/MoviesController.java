@@ -24,7 +24,7 @@ public class MoviesController {
      * @return all {@link Movie} positions from {@link MovieRepo}
      */
     @GetMapping
-    private ResponseEntity<List<Movie>> getMovies() {
+    public ResponseEntity<List<Movie>> getMovies() {
         List<Movie> body = service.getMovies();
 
         return body != null && !body.isEmpty()

@@ -19,14 +19,12 @@ public class BarController {
     @Autowired
     private BarService service;
 
-
     /**
      * @return all {@link Menu} positions from {@link BarRepo}
      */
     @GetMapping
-    private ResponseEntity<List<Menu>> getMenu() {
+    public ResponseEntity<List<Menu>> getMenu() {
         List<Menu> body = service.getMenu();
-
         return body != null && !body.isEmpty()
                 ? new ResponseEntity<>(body, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -19,7 +19,7 @@ spring:
       max-request-size: 215MB
 
 server:
-  port: 9191
+  port: 8080
 
 file:
   upload-dir: D://uploads

@@ -24,7 +24,7 @@ public class SessionsController {
      */
     @GetMapping("/on_movie")
     @ResponseBody
-    private List<Session> getSessionsByMovieId(@RequestParam("movie_id") Long movieId) {
+    public List<Session> getSessionsByMovieId(@RequestParam("movie_id") Long movieId) {
         return service.getSessionsByMovieId(movieId);
     }
 
@@ -35,7 +35,7 @@ public class SessionsController {
      */
     @GetMapping
     @ResponseBody
-    private ResponseEntity<Session> getSession(@RequestParam("session_id") Long sessionId) {
+    public ResponseEntity<Session> getSession(@RequestParam("session_id") Long sessionId) {
         Session body = service.getSession(sessionId);
         return body != null
                 ? new ResponseEntity<>(body, HttpStatus.OK)
