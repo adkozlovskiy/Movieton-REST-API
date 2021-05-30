@@ -38,7 +38,7 @@ public class FavoritesController {
      */
     @PostMapping
     public ResponseEntity<Favorite> postUserFavorite(@RequestBody Favorite favorite) {
-        Favorite body = service.postUserFavorite(favorite);
+        Favorite body = service.addFavorite(favorite);
         return new ResponseEntity<>(body, HttpStatus.CREATED);
     }
 }

@@ -17,7 +17,7 @@ public class FavoriteService {
         return favoriteRepo.findByUserId(userId);
     }
 
-    public Favorite postUserFavorite(Favorite favorite) {
+    public Favorite addFavorite(Favorite favorite) {
         return favoriteRepo.save(favorite);
     }
 }

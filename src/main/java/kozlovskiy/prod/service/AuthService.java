@@ -20,7 +20,6 @@ public class AuthService {
      * @return created user if successful registered, else - null
      */
     public User registerUser(User rd) {
-        System.out.println(rd.getPassword());
         User existed = authRepo.findByLogin(rd.getNickname(), rd.getEmail());
         if (existed == null) {
             try {
@@ -58,7 +57,7 @@ public class AuthService {
         return authRepo.findById(userId).orElse(null);
     }
 
-    private String getHashedPass(String pass, String salt) throws NoSuchAlgorithmException {
+    public String getHashedPass(String pass, String salt) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] messageDigest = md.digest((pass + salt).getBytes());
 
